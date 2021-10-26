@@ -1,0 +1,146 @@
+# play again
+def play_again():
+  print("\nDo you want to play again? (yes or no)")
+  answer = input("").lower()
+  if "y" in answer:
+    start()
+  else:
+    print ("Until next time, adventurer...")
+    
+# game over
+
+def game_over(reason):
+  print("\n" + reason)
+  print("Game Over!")
+  play_again()
+
+# good end
+def good_end():
+    print("You step through the archway. You win!")
+    print("\nPlay again y/n?")
+    
+    if "y" in answer:
+        start()
+    else:
+        print ("Until next time, adventurer...")
+
+# love end
+
+#nap time
+
+def nap_time():
+    print("Nap time")
+    
+    answer = input(">")
+
+    if answer == "1":
+        print("Text")
+    elif answer == "2":
+        good_end()
+    else:
+        print ("Type 1 or 2 to choose what to do next.")
+        nap_time()
+
+# monster room
+
+def monster_room():
+    print("Still, dry air greets you in this stone room. It is lit by gently flickering candles placed in holders along the wall. In the center the room there is a plush canopied bed, in the center of which lays a sleeping mintaur! Candlelight glints off the tips of its sharp horns as it shifts slightly, resting.")
+    print("\nYou spy a door, just past the bed. ")
+    print("\nWhat do you do?")
+    print("\n1) Walk past the beast to the door and hope it doesn't wake up.")
+    print("\n2) Seize this opportunity to take it unaware and stab it.")
+    print("\n3) Climb into the plush bed with it to take a nap. All this dungeoneering has been exhausting.")
+    
+    answer = input(">")
+    
+    if answer == "1":
+      print ("You quietly pad past the sleeping beast.It doesn't even stir as you walk by, deep in some bovine dream. The door on the wall opens to reveal an archway to a tunnel. ")
+      good_end()
+      
+    
+    elif answer == "2":
+        game_over("You unsheath your dagger and stalk towards the sleeping beast. Before you can plunge your blade into its unaware skull, it stirs and its eyes fly open! The minotaur lets out a mighty roar and spears you through with both horns.\nYou are slain.")
+    
+    elif answer == "3":
+        print("\n Up close it looks more like a docile cow than a heinous monster")
+        nap_time()
+    else:
+        print ("Type 1, 2 or 3 to choose what to do next.")
+        monster_room()
+        
+# gremlin room
+def gremlin_room():
+    print("\nA weathered little green creature greets you as you enter the next room.")
+    print("\n'Howdy, friend!")
+    print("\nI am the lying gremlin. Won't you help me cross the room?")
+    print("\nA small river runs through the stone in the floor. It looks like it would be waist-deep on a human, and twice the height of a gremlin.")
+    print("'Just let me hop on your back, human. I promise no harm will come to you.'")
+    print("\n What do you do?")
+    print("\n1) I shake my head and ford the stream alone.")
+    print("\n2) I shake my head and ford the stream alone. I offer the gremlin a ride on my back.")
+    
+    answer = input(">")
+    if answer == "1":
+        print:("The thing said it was a lying gremlin. Why on earth would you let it get on your back? You cross the river safely, fording it all the while with one eye on the gremlin. \nWhen you reach the other side, stone in the wall rearranges into a bright archway.")
+        good_end()
+    elif answer == "2":
+        game_over("The little creature hops on your back. You hoist it up on your shoulders then step into the river. It's colder and faster than it looks. You struggle against the current.\nSuddenly, a hot flash of pain arcs across your back! The gremlin chitters a strange laugh and stabs you yet again! You both sink into the icy river. \nYou lose!")
+    else:
+        print ("Type either 1 or 2 to choose what to do next.")
+
+# gem room
+def gem_room():
+    print("\nYou enter a chamber filled with precious stones of all colors! The light of your torch reflects off the rich jewels spilled all across the floor. Your focus zeroes in on them at first sight. You feel compelled to pocket at least one.")
+    print ("\nWhat do you do?")
+    print("1) I pick up a bright ruby.")
+    print("2) I ignore the gems.")
+    
+    answer = input(">")
+    if answer == "1":
+        game_over("A particularly large ruby calls to you. As you do so, your skin fuses to the gem and you find yourself unable to move. In horror, you watch as your feet transform into gemstone, then the rest of your body. \nYou are slain by a cursed gem!")
+    elif answer == "2":
+        print ("\nYou don't trust the way your eyes fixate on the jewels! You force your gaze away and notice a plain door on the far wall. You make your careful exit, eyes fixed to the door so not to look at the gems again.")
+        monster_room()
+    else:
+        print ("Type either 1 or 2 to choose what to do next.")
+    
+
+# riddle room
+
+def riddle_room():
+  print("You push through the soft wooden door, grimacing at the mold that comes off on your hand as you do.")
+  print ("\nYou enter a chamber, better lit, with two pedestals on either side. The first one holds a coin and the second one displays a mummified salamander.")
+  print ("\nOn the wall in between the two pedestals, you read words carved into the stone. 'I have a tail, and a head, but no legs. What am I?'")
+  print ("\nThere's no door in sight, so it looks like you have to choose an object to solve this riddle")
+  print("Which object do you pick? (1 or 2)")
+  print("1) I pick the salamander.")
+  print("2) I pick the coin.")
+
+  answer = input(">")
+  
+  if answer == "1":
+    game_over("You grasp the dry salamander. It suddenly wriggles to life and bites you! You feel poison coursing through your veins.")
+    print("\nGame over!")
+  elif answer == "2":
+    print("\n As you grasp the coin, a golden outline of a door appears in the stone wall. Success! You open the door and step through.")
+    gremlin_room()
+  else:
+    print ("Type either 1 or 2 to choose what to do next.")
+    gem_room()
+
+# start
+
+def start():
+  print("\nYou awaken to find yourself in a dark, windowless room. Mildew tinges the dank air as you look around your stone chamber by the greasy light of a single torch on the wall.  Nameless insects scurry across your feet. You shudder. Time to get out of this room.")
+  print("\nYou see a rotting wooden door to your left and a rusted metal door to your right. Which one do you take? (left or right)")
+  
+  answer = input(">").lower()
+
+  if "l" in answer:
+    riddle_room()
+  elif "r" in answer:
+    gem_room()
+  else:
+    game_over("Try again")
+
+start()
